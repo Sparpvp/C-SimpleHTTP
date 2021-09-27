@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
     if(argc == 1)
     {
-        printf("No Arguments Specified...\nUsage: ./executable URL\nExample: ./executable https://api.ipify.org");
+        printf("No Arguments Specified...\nUsage: ./executable URL\nExample: ./executable https://api.ipify.org\n");
         exit(EXIT_FAILURE);
     }
 
@@ -64,7 +64,9 @@ int main(int argc, char *argv[])
         // Always cleanup
         curl_easy_cleanup(curl);
     }
-
+    // Fish shell doesn't write in newline automatically
+    printf("\n");
+    
     curl_global_cleanup();
 
     return 0;
