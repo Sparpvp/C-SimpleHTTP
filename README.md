@@ -11,8 +11,8 @@ gcc main.c -o simplehttp -lcurl
 ```
 
 # Features Supported
-- HTTP Get
+- HTTP Get 
 
 # TODO:
-- HTTP Post
-- HTTP Server
+- HTTP Post (libcurl)
+- HTTP Server with sockets, the "real implementation" of HTTP in C.
