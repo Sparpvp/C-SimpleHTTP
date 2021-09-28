@@ -51,18 +51,21 @@ int main(int argc, char *argv[])
     else if(0 == strcmp(argv[2], "-s")) {
         SkipPeerVerification(&curl);
     }
-    else {
+    else 
+    {
         printf("Peer Verification Not Skipped\n");
     }
 
-    if(curl) {
+    if(curl) 
+    {
         curl_easy_setopt(curl, CURLOPT_URL, argv[1]);
     }
 
     printf("Result: ");
     // Perform request; res gets return code
     res = curl_easy_perform(curl);
-    if(res != CURLE_OK) {
+    if(res != CURLE_OK) 
+    {
         fprintf(stderr, "Failed request performing.\n");
         // Always cleanup
         curl_easy_cleanup(curl);
