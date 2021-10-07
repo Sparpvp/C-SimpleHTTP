@@ -15,5 +15,4 @@ gcc main.c -o simplehttp -lcurl
 - HTTP Post
 
 # TODO:
-~~- HTTP Post (libcurl)~~ **Done**
 - HTTP Server with sockets, the "real implementation" of HTTP in C.
