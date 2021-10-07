@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 {
     if(argc == 1)
     {
-        std::cout << argv[0] << ":" << "try" << "'" << argv[0] << "'" << "--help for more information" << std::endl;
+        std::cout << argv[0] << ":" << " try" << " '" << argv[0] << "' " << "--help for more information" << std::endl;
         exit(EXIT_FAILURE);
     }
     if(strcmp(argv[1], "-h") == 0) {
