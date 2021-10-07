@@ -1,5 +1,5 @@
 # C-SimpleHTTP
-A simple HTTP protocol implementation in C (Curl Wrapper)
+A simple HTTP protocol implementation in C (Curl Wrapper)  
 (And a C++ one, POST requests are not supported yet, and probably, never it's going to be)
 
 # How do i run it?
