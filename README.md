@@ -1,5 +1,5 @@
 # C-SimpleHTTP
-A simple HTTP protocol implementation in C
+A simple HTTP protocol implementation in C (Curl Wrapper)
 
 # How do i run it?
 First of all, this project is made in c, then you will need `GCC Compiler`.  
