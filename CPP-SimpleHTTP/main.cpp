@@ -3,7 +3,6 @@
 #include <cstring>
 #include <iostream>
 #include <curl/curl.h>
-#include <regex>
 
 size_t size = 0;
 size_t write_to_string(void *ptr, size_t size, size_t count, void *stream) {
