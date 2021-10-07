@@ -40,15 +40,27 @@ int main(int argc, char *argv[])
     bool skiparg = false;
 
     
-    if(argv[3] == NULL || argv[4] == NULL) 
+    if(argv[3] == NULL) 
     {
         skiparg = true;
         goto skip;
     }
-    if(0 == strcmp(argv[3], "-s") || 0 == strcmp(argv[4], "-s")) {
+    if(argv[4] == NULL && (0 == strcmp(argv[1], "-p")))
+    {
+        skiparg = true;
+        goto skip;
+    }
+    if(0 == strcmp(argv[3], "-s")) {
         SkipPeerVerification(curl);
     }
-    if(0 == strcmp(argv[3], "--skip") || 0 == strcmp(argv[4], "-s")) 
+    else if(0 == strcmp(argv[3], "--skip")) 
+    {
+        SkipPeerVerification(curl);
+    }
+    else if(0 == strcmp(argv[4], "-s")) {
+        SkipPeerVerification(curl);
+    }
+    else if(0 == strcmp(argv[4], "--skip")) 
     {
         SkipPeerVerification(curl);
     }
@@ -113,21 +125,7 @@ int main(int argc, char *argv[])
     }
     if(0 == strcmp(argv[1], "--post")) 
     {
-        if(curl) 
-        {
-            curl_easy_setopt(curl, CURLOPT_URL, argv[3]);
-            
-            // Specify POST data
-            curl_easy_setopt(curl, CURLOPT_POSTFIELDS, argv[2]);
-        
-            // Perform the request, res will get the return code
-            res = curl_easy_perform(curl);
-            
-            if(res != CURLE_OK)
-                fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
-
-            curl_easy_cleanup(curl);    
-        }
+        SkipPeerVerification(curl);
     }
 
     curl_global_cleanup();
