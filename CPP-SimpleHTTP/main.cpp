@@ -3,6 +3,7 @@
 #include <cstring>
 #include <iostream>
 #include <curl/curl.h>
+#include <regex>
 
 size_t size = 0;
 size_t write_to_string(void *ptr, size_t size, size_t count, void *stream) {
@@ -76,7 +77,7 @@ int main(int argc, char *argv[])
         res = curl_easy_perform(curl);
 
         std::cout << "Result: " << response << std::endl;
-
+        
         if(res != CURLE_OK) 
             fprintf(stderr, "Failed request performing.\n");
 
