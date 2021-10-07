@@ -109,6 +109,7 @@ int main(int argc, char *argv[])
     {
         if(curl) 
         {
+            // Specify Link for the POST request
             curl_easy_setopt(curl, CURLOPT_URL, argv[3]);
             
             // Specify POST data
