@@ -126,7 +126,22 @@ int main(int argc, char *argv[])
     }
     if(0 == strcmp(argv[1], "--post")) 
     {
-        SkipPeerVerification(curl);
+        if(curl) 
+        {
+            // Specify Link for the POST request
+            curl_easy_setopt(curl, CURLOPT_URL, argv[3]);
+            
+            // Specify POST data
+            curl_easy_setopt(curl, CURLOPT_POSTFIELDS, argv[2]);
+        
+            // Perform the request, res will get the return code
+            res = curl_easy_perform(curl);
+            
+            if(res != CURLE_OK)
+                fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+
+            curl_easy_cleanup(curl);    
+        }
     }
 
     curl_global_cleanup();
