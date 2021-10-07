@@ -14,18 +14,18 @@ void SkipPeerVerification(CURL *curl)
 {
     // Connect to a site that isn't using a signed certificate.
     curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
-    printf("Peer Verification Skipped\n");
+    std::cout << "Peer Verification Skipped\n";
 }
 
 void printHelp(char *argv[]) {
-    printf("Usage: %s <url> [options...]\n-s, --skip   Skip Peer Verification (skip signed SSL certificate)\n\nExample: %s https://api.ipify.org\n", argv[0], argv[0]);
+    std::cout << "Usage: " << argv[0] << " <url> [options...]\n-s, --skip\tSkip Peer Verification (skip signed SSL certificate)\n\nExample: " << argv[0] << " https://api.ipify.org\n";
 }
 
 int main(int argc, char *argv[]) 
 {
     if(argc == 1)
     {
-        printf("%s: try '%s --help' for more information", argv[0], argv[0]);
+        std::cout << argv[0] << ":" << "try" << "'" << argv[0] << "'" << "--help for more information" << std::endl;
         exit(EXIT_FAILURE);
     }
     if(strcmp(argv[1], "-h") == 0) {
@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 
     if(argv[2] == NULL) 
     {
-        printf("Peer Verification Not Skipped\n");
+        std::cout << "Peer Verification Not Skipped\n";
     } 
     else if(0 == strcmp(argv[2], "--skip")) 
     {
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
     }
     else 
     {
-        printf("Peer Verification Not Skipped\n");
+        std::cout << "Peer Verification Not Skipped\n";
     }
 
     if(curl) 
