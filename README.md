@@ -18,8 +18,16 @@ g++ main.cpp -o simplehttp -lcurl
 ```
 
 # Features Supported
-- HTTP Get **(C; C++)**
-- HTTP Post **(Only C Wrapper)**
+- Wrapper:
+    - HTTP GET **(C; C++)**
+    - HTTP POST **(Only C Wrapper)**
+- HTTP Implementation:
+    - HTTP Server 
+- TCP Implementation
+    - TCP Server
+    - TCP Client
 
 # TODO:
-- HTTP Server with sockets, the "real implementation" of HTTP in C.
+- Support HTTP/1.1 Features & POST requests
+- HTTP Client
+ 
