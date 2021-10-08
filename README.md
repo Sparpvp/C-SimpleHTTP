@@ -1,6 +1,6 @@
 # C-SimpleHTTP
-A simple HTTP protocol implementation in C (Curl Wrapper)  
-There is a C++ one, too; but POST requests are not supported yet.
+A simple HTTP protocol implementation in C
+There is a C++ (wrapper-only) one, too; but some features aren't supported yet.
 
 # How do i run it?
 First of all, this project is made in C, then you will need `GCC Compiler`.  
