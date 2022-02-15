@@ -19,15 +19,17 @@ g++ main.cpp -o simplehttp -lcurl
 
 # Features Supported
 - Wrapper:
-    - HTTP GET **(C; C++)**
-    - HTTP POST **(Only C Wrapper)**
+    - HTTP GET
+    - HTTP POST
 - HTTP Implementation:
     - HTTP Server 
+    - HTTP Client
 - TCP Implementation
     - TCP Server
     - TCP Client
 
 # TODO:
-- Support HTTP/1.1 Features & POST requests
-- HTTP Client
+- Code refactor
+- Windows HTTP Server Support
+- Linux HTTP Client Support
  
