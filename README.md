@@ -66,7 +66,7 @@ int main()
 }
 ```
 
-# How do i run it?
+# How do i run this?
 First of all, since this project is mostly made in C, you will need `GCC Compiler`.  
 There's some C++ code too, to compile it, you will need `G++ Compiler`.  
 For the wrapper, you will need to link`libcurl`.  
