@@ -3,3 +3,5 @@ test.c
 beforeAbstraction/*
 simplehttp
 CPP-SimpleHTTP/*
+*.out
+
