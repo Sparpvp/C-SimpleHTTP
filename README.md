@@ -98,6 +98,6 @@ g++ <name>.cpp
 
 # TODO:
 - [x] Code refactor
-- [ ] Windows HTTP Server Support
+- [ ] Windows HTTP Server Support & HTTP Server abstraction
 - [x] Linux HTTP Client Support
  
