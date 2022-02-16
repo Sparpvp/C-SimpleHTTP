@@ -59,7 +59,7 @@ g++ main.cpp -o simplehttp -lcurl
     - TCP Client
 
 # TODO:
-- [ x ] Code refactor
+- [x] Code refactor
 - [ ] Windows HTTP Server Support
 - [ ] Linux HTTP Client Support
  
