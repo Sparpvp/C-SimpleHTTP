@@ -12,18 +12,58 @@ enum RequestType
 };
 typedef enum RequestType RequestType;
 
+struct BufferStr
+{
+    char *ptr;
+    size_t len;
+};
+typedef struct BufferStr BufferStr;
+
 struct Request
 {
     CURL *curl;
     CURLcode res;
+    BufferStr *response;
     bool skiparg;
     RequestType rt;
 };
 typedef struct Request Request;
 
-void CheckRequestType(Request *r, char *arg)
+/* Response String Help Functions */
+
+void init_string(struct BufferStr *s)
 {
-    if (0 == strcmp(arg, "-p") || 0 == strcmp(arg, "--post"))
+    s->len = 0;
+    s->ptr = malloc(s->len + 1);
+    if (s->ptr == NULL)
+    {
+        fprintf(stderr, "malloc() failed\n");
+        exit(EXIT_FAILURE);
+    }
+    s->ptr[0] = '\0';
+}
+
+size_t writefunc(void *ptr, size_t size, size_t nmemb, struct BufferStr *s)
+{
+    size_t new_len = s->len + size * nmemb;
+    s->ptr = realloc(s->ptr, new_len + 1);
+    if (s->ptr == NULL)
+    {
+        fprintf(stderr, "realloc() failed\n");
+        exit(EXIT_FAILURE);
+    }
+    memcpy(s->ptr + s->len, ptr, size * nmemb);
+    s->ptr[new_len] = '\0';
+    s->len = new_len;
+
+    return size * nmemb;
+}
+
+/* Help Functions */
+
+void CheckRequestType(Request *r, char *argv[])
+{
+    if (0 == strcmp(argv[1], "-p") || 0 == strcmp(argv[1], "--post"))
         r->rt = POST;
     else
         r->rt = GET;
@@ -49,22 +89,24 @@ void PrintUsage(int argc, char *arg0, char *arg1)
         PrintHelp(arg1);
 }
 
-void PeerSSLVerify(Request *r, char *arg3, char *arg4)
+/* Network Functions */
+
+void PeerSSLVerify(Request *r, char *argv[])
 {
-    if (r->rt == GET && arg3 == NULL || r->rt == POST && arg4 == NULL)
+    if (r->rt == GET && argv[3] == NULL || r->rt == POST && argv[4] == NULL)
     {
         printf("SSL Peer certification verify not skipped\n");
         return;
     }
 
     // Connect to a site that isn't using a signed certificate.
-    if (r->rt == GET && 0 == strcmp(arg3, "-s"))
+    if (r->rt == GET && 0 == strcmp(argv[3], "-s"))
         curl_easy_setopt(r->curl, CURLOPT_SSL_VERIFYPEER, 0L);
-    else if (r->rt == GET && 0 == strcmp(arg3, "--skip"))
+    else if (r->rt == GET && 0 == strcmp(argv[3], "--skip"))
         curl_easy_setopt(r->curl, CURLOPT_SSL_VERIFYPEER, 0L);
-    else if (r->rt == POST && 0 == strcmp(arg4, "-s"))
+    else if (r->rt == POST && 0 == strcmp(argv[4], "-s"))
         curl_easy_setopt(r->curl, CURLOPT_SSL_VERIFYPEER, 0L);
-    else if (r->rt == POST && 0 == strcmp(arg4, "--skip"))
+    else if (r->rt == POST && 0 == strcmp(argv[4], "--skip"))
         curl_easy_setopt(r->curl, CURLOPT_SSL_VERIFYPEER, 0L);
 
     printf("SSL Peer certification verify skipped\n");
@@ -79,10 +121,16 @@ void Init(Request *r)
 
 void SendGET(Request *r, char *url)
 {
+    init_string((BufferStr *)&r->response);
+
     curl_easy_setopt(r->curl, CURLOPT_URL, url);
-    printf("Response: ");
+    curl_easy_setopt(r->curl, CURLOPT_WRITEFUNCTION, writefunc);
+    curl_easy_setopt(r->curl, CURLOPT_WRITEDATA, &r->response);
+
     // Perform request; res gets return code
     r->res = curl_easy_perform(r->curl);
+    printf("Response: %s", r->response);
+
     if (r->res != CURLE_OK)
     {
         fprintf(stderr, "Failed request performing.\n");

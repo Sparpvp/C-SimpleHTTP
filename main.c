@@ -7,9 +7,9 @@ int main(int argc, char *argv[])
     Request request;
     Init(&request);
 
-    CheckRequestType(&request, argv[1]);
+    CheckRequestType(&request, argv);
 
-    PeerSSLVerify(&request, argv[3], argv[4]);
+    PeerSSLVerify(&request, argv);
 
     // HTTP/GET
     if (request.rt == GET)
