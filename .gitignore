@@ -1,3 +1,4 @@
 test.c
-.vscode
-beforeAbstraction
+.vscode/*
+beforeAbstraction/*
+simplehttp
