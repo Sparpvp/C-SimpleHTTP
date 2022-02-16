@@ -1,6 +1,6 @@
 # C-SimpleHTTP
-A simple HTTP protocol implementation in C  
-There is a C++ (wrapper-only) one, too; but some features aren't supported yet.
+A simple HTTP protocol implementation made in C.  
+Here you can find a wrapper of libcurl and no-bloat TCP/HTTP Server & Client.
 
 # Usage
 Below there's a full cli implementation of the wrapper.
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
 # How do i run it?
 First of all, this project is made in C, then you will need `GCC Compiler`.  
-If you want to compile the C++ one, you will need `G++ Compiler`.  
+If you want to compile the C++ example, you will need `G++ Compiler`.  
 There is a dependency too, curl, or more specify, its library `libcurl`.  
 
 Then, compile it with:  
@@ -42,7 +42,7 @@ Then, compile it with:
 gcc main.c -o simplehttp -lcurl
 ```
 
-For the C++ version, instead:
+If you want to compile the C++ example, instead:
 ```
 g++ main.cpp -o simplehttp -lcurl
 ```
@@ -59,7 +59,7 @@ g++ main.cpp -o simplehttp -lcurl
     - TCP Client
 
 # TODO:
-- Code refactor
-- Windows HTTP Server Support
-- Linux HTTP Client Support
+- [x] Code refactor
+- [ ] Windows HTTP Server Support
+- [ ] Linux HTTP Client Support
  
