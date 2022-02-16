@@ -1,6 +1,6 @@
 # C-SimpleHTTP
 A simple HTTP protocol implementation made in C.  
-Here you can find a wrapper of libcurl, no-bloat TCP/HTTP Server & Client.
+Here you can find a wrapper of libcurl and no-bloat TCP/HTTP Server & Client.
 
 # Usage
 Below there's a full cli implementation of the wrapper.
@@ -59,7 +59,7 @@ g++ main.cpp -o simplehttp -lcurl
     - TCP Client
 
 # TODO:
-- Code refactor
-- Windows HTTP Server Support
-- Linux HTTP Client Support
+- [ x ] Code refactor
+- [ ] Windows HTTP Server Support
+- [ ] Linux HTTP Client Support
  
