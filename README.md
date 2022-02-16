@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
 # How do i run it?
 First of all, this project is made in C, then you will need `GCC Compiler`.  
-If you want to compile the C++ one, you will need `G++ Compiler`.  
+If you want to compile the C++ example, you will need `G++ Compiler`.  
 There is a dependency too, curl, or more specify, its library `libcurl`.  
 
 Then, compile it with:  
@@ -42,7 +42,7 @@ Then, compile it with:
 gcc main.c -o simplehttp -lcurl
 ```
 
-For the C++ version, instead:
+If you want to compile the C++ example, instead:
 ```
 g++ main.cpp -o simplehttp -lcurl
 ```
