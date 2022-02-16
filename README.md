@@ -50,19 +50,39 @@ int main()
 }
 ```  
 
-# How do i run it?
-First of all, this project is made in C, then you will need `GCC Compiler`.  
-If you want to compile the C++ example, you will need `G++ Compiler`.  
-There is a dependency too, curl, or more specify, its library `libcurl`.  
+# Fast HTTP POST
+While there isn't the ABSOLUTE NO BLOAT implementation of HTTP POST with sockets, you can use the wrapper.
+```c++
+#include "wrap.h"
 
-Then, compile it with:  
+int main()
+{
+    Request request;
+    Init(&request);
+
+    SendPOST(&request, "https://webhook.site/c4d4e0c2-013c-440b-9f65-fc98a8bd3811", "Some Data!");
+
+    return 0;
+}
+```
+
+# How do i run it?
+First of all, since this project is mostly made in C, you will need `GCC Compiler`.  
+There's some C++ code too, to compile it, you will need `G++ Compiler`.  
+For the wrapper, you will need to link`libcurl`.  
+
+Wrapper compile command:  
 ```
 gcc main.c -o simplehttp -lcurl
 ```
 
-If you want to compile the C++ example, instead:
+The rest of the project is compilable by:
 ```
-g++ main.cpp -o simplehttp -lcurl
+gcc <name>.c
+```
+For the C++ source, instead:
+```
+g++ <name>.cpp
 ```
 
 # Features Supported
@@ -79,5 +99,5 @@ g++ main.cpp -o simplehttp -lcurl
 # TODO:
 - [x] Code refactor
 - [ ] Windows HTTP Server Support
-- [ ] Linux HTTP Client Support
+- [x] Linux HTTP Client Support
  
