@@ -33,6 +33,7 @@ int main(int argc, char *argv[])
 ```  
 
 # Fast HTTP GET 
+Abstracted HTTP GET request with C-SimpleHTTP's wrap.h
 ```c++
 #include "wrap.h"
 
