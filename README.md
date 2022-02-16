@@ -2,7 +2,7 @@
 A simple HTTP protocol implementation made in C.  
 Here you can find a wrapper of libcurl and no-bloat TCP/HTTP Server & Client.
 
-# Usage
+# Full CLI Tool Usage
 Below there's a full cli implementation of the wrapper.
 ```c++
 #include "wrap.h"
@@ -14,9 +14,9 @@ int main(int argc, char *argv[])
     Request request;
     Init(&request);
 
-    CheckRequestType(&request, argv[1]);
+    CheckRequestType(&request, argv);
 
-    PeerSSLVerify(&request, argv[3], argv[4]);
+    PeerSSLVerify(&request, argv);
 
     // HTTP/GET
     if (request.rt == GET)
@@ -30,7 +30,22 @@ int main(int argc, char *argv[])
 
     return 0;
 }
-```
+```  
+
+# Fast HTTP GET 
+```c++
+#include "wrap.h"
+
+int main()
+{
+    Request request;
+    Init(&request);
+
+    SendGET(&request, "https://api.shadowserver.org/net/asn?prefix=212271");
+
+    return 0;
+}
+```  
 
 # How do i run it?
 First of all, this project is made in C, then you will need `GCC Compiler`.  
