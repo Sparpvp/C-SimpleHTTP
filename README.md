@@ -33,16 +33,18 @@ int main(int argc, char *argv[])
 ```  
 
 # Fast HTTP GET 
-Abstracted HTTP GET request with C-SimpleHTTP's wrap.h
+Absolute NO-BLOAT Implementation of HTTP Protocol with sockets.
 ```c++
-#include "wrap.h"
+#include "pkg/Request.hpp"
 
 int main()
 {
-    Request request;
-    Init(&request);
+    // Initialize Object
+    http::Request *request = new http::Request("webhook.site/c4d4e0c2-013c-440b-9f65-fc98a8bd3811");
 
-    SendGET(&request, "https://api.shadowserver.org/net/asn?prefix=212271");
+    // Send HTTP/GET Request
+    request->SendGET(80);
+    std::cout << request->response;
 
     return 0;
 }
