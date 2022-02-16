@@ -1,6 +1,5 @@
 # C-SimpleHTTP
 A simple HTTP protocol implementation in C  
-There is a C++ (wrapper-only) one, too; but some features aren't supported yet.
 
 # Usage
 Below there's a full cli implementation of the wrapper.
